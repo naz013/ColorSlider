@@ -62,7 +62,7 @@ public class ColorSlider extends View {
         }
     }
 
-    public void setColor(@ColorInt int[] colors) {
+    public void setColors(@ColorInt int[] colors) {
         if (colors != null && colors.length > 0) {
             this.mColors = colors;
             this.calculateRectangles();
