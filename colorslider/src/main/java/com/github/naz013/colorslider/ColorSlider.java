@@ -13,8 +13,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.naz013.colorslider.R;
-
 /**
  * Copyright 2017 Nazar Suhovich
  * <p/>
