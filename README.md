@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.naz013:ColorSlider:1.0.1'
+    compile 'com.github.naz013:ColorSlider:1.0.2'
 }
 ```
 
