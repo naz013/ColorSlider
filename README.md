@@ -1,6 +1,8 @@
 # ColorSlider
 Simple color picker library for Android
 
+<img src="https://github.com/naz013/ColorSlider/raw/master/res/screenshow.png" width="400" alt="Screenshot">
+
 ## Installation
 TODO: Describe the installation process
 ## Usage
