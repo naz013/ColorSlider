@@ -1,7 +1,7 @@
 # ColorSlider
 Simple color picker library for Android
 
-[![](https://jitpack.io/v/nazarXYZ/ColorSlider.svg)](https://jitpack.io/#nazarXYZ/ColorSlider)
+[![](https://jitpack.io/v/naz013/ColorSlider.svg)](https://jitpack.io/#naz013/ColorSlider)
 
 Screenshot
 
@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.nazarXYZ:ColorSlider:1.0.2'
+    compile 'com.github.naz013:ColorSlider:1.0.2'
 }
 ```
 
