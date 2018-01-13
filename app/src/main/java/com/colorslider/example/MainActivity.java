@@ -1,5 +1,6 @@
 package com.colorslider.example;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         sliderHexArray.setListener(mListener);
 
         ColorSlider sliderGradientArray = findViewById(R.id.color_slider_gradient_array);
+        sliderGradientArray.setGradient(new int[]{Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.RED}, 200);
         sliderGradientArray.setListener(mListener);
 
         updateView(slider.getSelectedColor());

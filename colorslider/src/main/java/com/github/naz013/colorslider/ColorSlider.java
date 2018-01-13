@@ -78,6 +78,19 @@ public class ColorSlider extends View {
         }
     }
 
+    public void setGradient(@ColorInt int[] colors, int steps) {
+        if (colors == null || colors.length < 2) {
+            throw new IllegalArgumentException("Colors array must contain 2 or more color.");
+        }
+        if (colors.length == 2) {
+            setGradient(colors[0], colors[1], steps);
+        } else {
+            this.calculateColors(colors, steps);
+            this.calculateRectangles();
+            this.invalidate();
+        }
+    }
+
     public void selectColor(@ColorInt int color) {
         for (int i = 0; i < this.mColors.length; i++) {
             if (this.mColors[i] == color) {
@@ -195,7 +208,48 @@ public class ColorSlider extends View {
         }
     }
 
-    private void calculateColors(int fromColor, int toColor, int steps) {
+    private void calculateColors(@ColorInt int[] colors, int steps) {
+        int numOfColors = colors.length;
+        int stepsPerBlock = steps / (numOfColors - 1);
+        int leftSteps = 0;
+        if (steps % stepsPerBlock != 0) {
+            leftSteps = steps % stepsPerBlock;
+        }
+        this.mColors = new int[steps];
+        for (int i = 1; i < numOfColors; i++) {
+            int fromColor = colors[i - 1];
+            int toColor = colors[i];
+
+            int startBlockPosition = (i - 1) * stepsPerBlock;
+            int endBlockPosition = i * stepsPerBlock;
+            if (i == numOfColors - 1) endBlockPosition += leftSteps;
+            int blockSteps = endBlockPosition - startBlockPosition;
+
+            float a1 = (float) Color.alpha(fromColor);
+            float r1 = (float) Color.red(fromColor);
+            float g1 = (float) Color.green(fromColor);
+            float b1 = (float) Color.blue(fromColor);
+
+            float a2 = (float) Color.alpha(toColor);
+            float r2 = (float) Color.red(toColor);
+            float g2 = (float) Color.green(toColor);
+            float b2 = (float) Color.blue(toColor);
+
+            float alphaStep = (a2 - a1) / (float) blockSteps;
+            float redStep = (r2 - r1) / (float) blockSteps;
+            float greenStep = (g2 - g1) / (float) blockSteps;
+            float blueStep = (b2 - b1) / (float) blockSteps;
+
+            int k = 0;
+            for (int j = startBlockPosition; j < endBlockPosition; j++) {
+                this.mColors[j] = Color.argb((int) (a1 + alphaStep * k), (int) (r1 + redStep * k),
+                        (int) (g1 + greenStep * k), (int) (b1 + blueStep * k));
+                k++;
+            }
+        }
+    }
+
+    private void calculateColors(@ColorInt int fromColor, @ColorInt int toColor, int steps) {
         float a1 = (float) Color.alpha(fromColor);
         float r1 = (float) Color.red(fromColor);
         float g1 = (float) Color.green(fromColor);
@@ -280,6 +334,8 @@ public class ColorSlider extends View {
         float width = getMeasuredWidth();
         float height = getMeasuredHeight();
         float itemWidth = width / (float) this.mColors.length;
+        this.mColorRects = new Rect[this.mColors.length];
+        this.mColorFullRects = new Rect[this.mColors.length];
         float margin = height * 0.1f;
         for (int i = 0; i < this.mColors.length; i++) {
             this.mColorRects[i] = new Rect((int) (itemWidth * i), (int) margin, (int) (itemWidth * (i + 1)), (int) (height - margin));
