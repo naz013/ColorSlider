@@ -5,7 +5,7 @@ Simple color picker library for Android
 
 Screenshot
 
-<img src="https://github.com/naz013/ColorSlider/raw/master/res/screenshow.png" width="400" alt="Screenshot">
+<img src="https://github.com/naz013/ColorSlider/raw/master/res/screenshot.png" width="400" alt="Screenshot">
 
 Download
 --------
