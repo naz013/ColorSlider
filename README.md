@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.naz013:ColorSlider:1.0.2'
+    compile 'com.github.naz013:ColorSlider:1.0.3'
 }
 ```
 
@@ -43,6 +43,12 @@ via XML:
 in code:
 ```java
 colorSlider.setGradient(@ColorInt int fromColor, @ColorInt int toColor, int steps)
+```
+
+Gradient from array of colors:
+in code:
+```java
+colorSlider.setGradient(@ColorInt int[] colors, int steps)
 ```
 
 
