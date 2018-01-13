@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ColorSlider.iml" filepath="$PROJECT_DIR$/ColorSlider.iml" />
+      <module fileurl="file://C:\Users\Nazar\StudioProjects\ColorSlider\ColorSlider.iml" filepath="C:\Users\Nazar\StudioProjects\ColorSlider\ColorSlider.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Nazar\StudioProjects\ColorSlider\app\app.iml" filepath="C:\Users\Nazar\StudioProjects\ColorSlider\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/colorslider/colorslider.iml" filepath="$PROJECT_DIR$/colorslider/colorslider.iml" />
+      <module fileurl="file://C:\Users\Nazar\StudioProjects\ColorSlider\colorslider\colorslider.iml" filepath="C:\Users\Nazar\StudioProjects\ColorSlider\colorslider\colorslider.iml" />
     </modules>
   </component>
 </project>

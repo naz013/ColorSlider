@@ -23,20 +23,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ColorSlider slider = (ColorSlider) findViewById(R.id.color_slider);
+        ColorSlider slider = findViewById(R.id.color_slider);
         slider.setListener(mListener);
 
-        ColorSlider sliderGradient = (ColorSlider) findViewById(R.id.color_slider_gradient);
+        ColorSlider sliderGradient = findViewById(R.id.color_slider_gradient);
         sliderGradient.setListener(mListener);
 
-        ColorSlider sliderArray = (ColorSlider) findViewById(R.id.color_slider_array);
+        ColorSlider sliderArray = findViewById(R.id.color_slider_array);
         sliderArray.setListener(mListener);
 
-        ColorSlider sliderHexArray = (ColorSlider) findViewById(R.id.color_slider_colors);
+        ColorSlider sliderHexArray = findViewById(R.id.color_slider_colors);
         sliderHexArray.setListener(mListener);
+
+        ColorSlider sliderGradientArray = findViewById(R.id.color_slider_gradient_array);
+        sliderGradientArray.setListener(mListener);
 
         updateView(slider.getSelectedColor());
     }
