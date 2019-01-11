@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ColorSlider slider = findViewById(R.id.color_slider);
+        slider.setSelectorColor(Color.BLUE);
         slider.setListener(mListener);
 
         ColorSlider sliderGradient = findViewById(R.id.color_slider_gradient);

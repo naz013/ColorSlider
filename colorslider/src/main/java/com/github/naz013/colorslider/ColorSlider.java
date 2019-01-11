@@ -7,14 +7,16 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Copyright 2017 Nazar Suhovich
+ * Copyright 2019 Nazar Suhovich
  * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,25 +30,25 @@ import android.view.View;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 public class ColorSlider extends View {
 
     private int[] mColors = new int[]{};
     private Rect[] mColorRects = new Rect[]{};
     private Rect[] mColorFullRects = new Rect[]{};
+    @Nullable
     private Paint mPaint;
+    @Nullable
     private Paint mSelectorPaint;
     private int mSelectedItem;
+    @Nullable
     private OnColorSelectedListener mListener;
 
     public ColorSlider(Context context) {
-        super(context);
-        init(context, null);
+        this(context, null);
     }
 
     public ColorSlider(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs);
+        this(context, attrs, 0);
     }
 
     public ColorSlider(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -54,6 +56,22 @@ public class ColorSlider extends View {
         init(context, attrs);
     }
 
+    @SuppressWarnings("unused")
+    public void setSelectorColor(@ColorInt int color) {
+        if (this.mSelectorPaint != null) {
+            this.mSelectorPaint.setColor(color);
+            this.invalidate();
+        }
+    }
+
+    @SuppressWarnings("unused")
+    public void setSelectorColorResource(@ColorRes int color) {
+        if (color != 0) {
+            this.setSelectorColor(ContextCompat.getColor(getContext(), color));
+        }
+    }
+
+    @SuppressWarnings("unused")
     public void setHexColors(String[] hexColors) {
         if (hexColors != null && hexColors.length > 0) {
             this.convertToColors(hexColors);
@@ -62,6 +80,7 @@ public class ColorSlider extends View {
         }
     }
 
+    @SuppressWarnings("unused")
     public void setColors(@ColorInt int[] colors) {
         if (colors != null && colors.length > 0) {
             this.mColors = colors;
@@ -70,6 +89,7 @@ public class ColorSlider extends View {
         }
     }
 
+    @SuppressWarnings("unused")
     public void setGradient(@ColorInt int fromColor, @ColorInt int toColor, int steps) {
         if (fromColor != 0 && toColor != 0 && steps != 0) {
             this.calculateColors(fromColor, toColor, steps);
@@ -78,6 +98,7 @@ public class ColorSlider extends View {
         }
     }
 
+    @SuppressWarnings("unused")
     public void setGradient(@ColorInt int[] colors, int steps) {
         if (colors == null || colors.length < 2) {
             throw new IllegalArgumentException("Colors array must contain 2 or more color.");
@@ -91,6 +112,7 @@ public class ColorSlider extends View {
         }
     }
 
+    @SuppressWarnings("unused")
     public void selectColor(@ColorInt int color) {
         for (int i = 0; i < this.mColors.length; i++) {
             if (this.mColors[i] == color) {
@@ -101,6 +123,7 @@ public class ColorSlider extends View {
         }
     }
 
+    @SuppressWarnings("unused")
     public void setSelection(int position) {
         if (position >= mColors.length) {
             return;
@@ -109,15 +132,18 @@ public class ColorSlider extends View {
         this.invalidate();
     }
 
+    @SuppressWarnings("unused")
     public int getSelectedItem() {
         return this.mSelectedItem;
     }
 
     @ColorInt
+    @SuppressWarnings("unused")
     public int getSelectedColor() {
         return this.mColors[this.mSelectedItem];
     }
 
+    @SuppressWarnings("unused")
     public void setListener(OnColorSelectedListener listener) {
         this.mListener = listener;
     }
@@ -128,7 +154,7 @@ public class ColorSlider extends View {
 
         this.mSelectorPaint = new Paint();
         this.mSelectorPaint.setStyle(Paint.Style.STROKE);
-        this.mSelectorPaint.setColor(getResources().getColor(android.R.color.background_dark));
+        this.mSelectorPaint.setColor(ContextCompat.getColor(context, android.R.color.background_dark));
         this.mSelectorPaint.setStrokeWidth(2f);
 
         setOnTouchListener(new OnTouchListener() {
@@ -138,9 +164,11 @@ public class ColorSlider extends View {
             }
         });
 
+        int selectorColor = 0;
         if (attrs != null) {
             TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ColorSlider, 0, 0);
             try {
+                selectorColor = a.getColor(R.styleable.ColorSlider_cs_selector_color, 0);
                 int id = a.getResourceId(R.styleable.ColorSlider_cs_colors, 0);
                 int hexId = a.getResourceId(R.styleable.ColorSlider_cs_hex_colors, 0);
                 if (id != 0) {
@@ -174,6 +202,9 @@ public class ColorSlider extends View {
         }
         this.mColorRects = new Rect[this.mColors.length];
         this.mColorFullRects = new Rect[this.mColors.length];
+        if (selectorColor != 0 && this.mSelectorPaint != null) {
+            this.mSelectorPaint.setColor(selectorColor);
+        }
     }
 
     private void initDefaultColors() {
@@ -310,13 +341,15 @@ public class ColorSlider extends View {
     }
 
     private void drawSlider(Canvas canvas) {
-        for (int i = 0; i < this.mColorRects.length; i++) {
-            this.mPaint.setColor(this.mColors[i]);
-            if (i == this.mSelectedItem) {
-                canvas.drawRect(this.mColorFullRects[i], this.mPaint);
-                canvas.drawRect(this.mColorFullRects[i], this.mSelectorPaint);
-            } else {
-                canvas.drawRect(this.mColorRects[i], this.mPaint);
+        if (this.mPaint != null) {
+            for (int i = 0; i < this.mColorRects.length; i++) {
+                this.mPaint.setColor(this.mColors[i]);
+                if (i == this.mSelectedItem) {
+                    canvas.drawRect(this.mColorFullRects[i], this.mPaint);
+                    canvas.drawRect(this.mColorFullRects[i], this.mSelectorPaint);
+                } else {
+                    canvas.drawRect(this.mColorRects[i], this.mPaint);
+                }
             }
         }
     }

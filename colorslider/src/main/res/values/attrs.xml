@@ -6,5 +6,6 @@
         <attr name="cs_from_color" format="color" />
         <attr name="cs_to_color" format="color" />
         <attr name="cs_steps" format="integer" />
+        <attr name="cs_selector_color" format="color" />
     </declare-styleable>
 </resources>
