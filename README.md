@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.naz013:ColorSlider:1.0.3'
+    implementation 'com.github.naz013:ColorSlider:1.0.4'
 }
 ```
 
@@ -95,7 +95,7 @@ colorSlider.setListener(new ColorSlider.OnColorSelectedListener() {
 License
 -------
 
-    Copyright 2017 Nazar Suhovich
+    Copyright 2019 Nazar Suhovich
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
