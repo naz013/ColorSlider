@@ -4,12 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ColorSlider.iml" filepath="$PROJECT_DIR$/ColorSlider.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/ColorSlider.iml" filepath="$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/ColorSlider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/ColorSlider.iml" filepath="$PROJECT_DIR$/.idea/ColorSlider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ColorSlider.iml" filepath="$PROJECT_DIR$/ColorSlider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/app/app.iml" filepath="$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/colorslider/colorslider.iml" filepath="$PROJECT_DIR$/colorslider/colorslider.iml" />
       <module fileurl="file://$PROJECT_DIR$/colorslider/colorslider.iml" filepath="$PROJECT_DIR$/colorslider/colorslider.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/colorslider/colorslider.iml" filepath="$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/colorslider/colorslider.iml" />
     </modules>

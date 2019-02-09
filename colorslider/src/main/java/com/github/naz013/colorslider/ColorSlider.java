@@ -1,5 +1,6 @@
 package com.github.naz013.colorslider;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -8,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -42,6 +44,7 @@ public class ColorSlider extends View {
     private int mSelectedItem;
     @Nullable
     private OnColorSelectedListener mListener;
+    private boolean mIsLockMode = false;
 
     public ColorSlider(Context context) {
         this(context, null);
@@ -54,6 +57,24 @@ public class ColorSlider extends View {
     public ColorSlider(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
+    }
+
+    /**
+     * Change slider lock mode. Lock mode - disallow tracking touch outside view bounds. Default value - true.
+     * @param lockMode lock mode boolean.
+     */
+    @SuppressWarnings("unused")
+    public void setLockMode(boolean lockMode) {
+        this.mIsLockMode = lockMode;
+    }
+
+    /**
+     * Return is slider in lock mode.
+     * @return lock mode status.
+     */
+    @SuppressWarnings("unused")
+    public boolean isLockMode() {
+        return mIsLockMode;
     }
 
     @SuppressWarnings("unused")
@@ -158,6 +179,7 @@ public class ColorSlider extends View {
         this.mSelectorPaint.setStrokeWidth(2f);
 
         setOnTouchListener(new OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return processTouch(event);
@@ -313,16 +335,28 @@ public class ColorSlider extends View {
     }
 
     private void updateView(float x, float y) {
+        boolean changed = false;
         for (int i = 0; i < this.mColorFullRects.length; i++) {
             Rect rect = this.mColorFullRects[i];
             if (rect != null) {
-                if (rect.contains((int) x, (int) y) && i != this.mSelectedItem) {
+                if (isInRange(rect, (int) x, (int) y) && i != this.mSelectedItem) {
                     this.mSelectedItem = i;
-                    notifyChanged();
-                    invalidate();
+                    changed = true;
                     break;
                 }
             }
+        }
+        if (changed) {
+            invalidate();
+            notifyChanged();
+        }
+    }
+
+    private boolean isInRange(@NonNull Rect rect, int x, int y) {
+        if (mIsLockMode) {
+            return rect.contains(x, y);
+        } else {
+            return rect.left <= x && rect.right >= x;
         }
     }
 
@@ -346,7 +380,9 @@ public class ColorSlider extends View {
                 this.mPaint.setColor(this.mColors[i]);
                 if (i == this.mSelectedItem) {
                     canvas.drawRect(this.mColorFullRects[i], this.mPaint);
-                    canvas.drawRect(this.mColorFullRects[i], this.mSelectorPaint);
+                    if (this.mSelectorPaint != null) {
+                        canvas.drawRect(this.mColorFullRects[i], this.mSelectorPaint);
+                    }
                 } else {
                     canvas.drawRect(this.mColorRects[i], this.mPaint);
                 }
