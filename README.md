@@ -7,6 +7,12 @@ Screenshot
 
 <img src="https://github.com/naz013/ColorSlider/raw/master/res/screenshot.png" width="400" alt="Screenshot">
 
+Sample APP
+--------
+[Download](https://github.com/naz013/ColorSlider/raw/master/app/release/app-release.apk)
+
+<!---[Google Play](https://play.google.com/store/apps/details?id=com.github.naz013.emojirateslider) --->
+
 Download
 --------
 Download latest version with Gradle:
