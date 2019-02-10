@@ -11,7 +11,7 @@ Sample APP
 --------
 [Download](https://github.com/naz013/ColorSlider/raw/master/app/release/app-release.apk)
 
-<!---[Google Play](https://play.google.com/store/apps/details?id=com.github.naz013.emojirateslider) --->
+[Google Play](https://play.google.com/store/apps/details?id=com.colorslider.example)
 
 Download
 --------
