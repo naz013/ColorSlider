@@ -3,11 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ColorSlider.iml" filepath="$PROJECT_DIR$/ColorSlider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/ColorSlider.iml" filepath="$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/ColorSlider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/ColorSlider-app.iml" filepath="$PROJECT_DIR$/app/ColorSlider-app.iml" group="ColorSlider/app" />
+      <module fileurl="file://$PROJECT_DIR$/colorslider/ColorSlider-colorslider.iml" filepath="$PROJECT_DIR$/colorslider/ColorSlider-colorslider.iml" group="ColorSlider/colorslider" />
+      <module fileurl="file://$PROJECT_DIR$/StudioProjects-ColorSlider.iml" filepath="$PROJECT_DIR$/StudioProjects-ColorSlider.iml" group="ColorSlider" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/app/app.iml" filepath="$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/colorslider/colorslider.iml" filepath="$PROJECT_DIR$/colorslider/colorslider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/colorslider/colorslider.iml" filepath="$PROJECT_DIR$/../../../Nazar/StudioProjects/ColorSlider/colorslider/colorslider.iml" />
     </modules>
   </component>
 </project>
