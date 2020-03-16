@@ -26,6 +26,13 @@ dependencies {
 }
 ```
 
+AndroidX version:
+```groovy
+dependencies {
+    implementation 'com.github.naz013:ColorSlider:2.0.6'
+}
+```
+
 Usage
 -----
 Default (Material colors picker):
