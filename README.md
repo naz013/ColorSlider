@@ -22,7 +22,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.naz013:ColorSlider:1.0.5'
+    implementation 'com.github.naz013:ColorSlider:1.0.6'
+}
+```
+
+AndroidX version:
+```groovy
+dependencies {
+    implementation 'com.github.naz013:ColorSlider:2.0.6'
 }
 ```
 
