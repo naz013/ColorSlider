@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.naz013:ColorSlider:1.0.5'
+    implementation 'com.github.naz013:ColorSlider:1.0.6'
 }
 ```
 
