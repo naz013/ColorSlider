@@ -86,6 +86,14 @@ public class ColorSlider extends View {
     }
 
     @SuppressWarnings("unused")
+    public void setSelectorStyle(Paint.Style style) {
+        if (this.mSelectorPaint != null) {
+            this.mSelectorPaint.setStyle(style);
+            this.invalidate();
+        }
+    }
+
+    @SuppressWarnings("unused")
     public void setSelectorColorResource(@ColorRes int color) {
         if (color != 0) {
             this.setSelectorColor(ContextCompat.getColor(getContext(), color));
